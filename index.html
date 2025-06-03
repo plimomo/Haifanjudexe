@@ -265,6 +265,23 @@
             background: #FFA500;
         }
 
+        .firstpic img {
+    width: 35%;
+    height: 35%;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.firstpic img:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5); /* เงาสีชมพูนิด ๆ */
+    filter: brightness(1.1) saturate(1.2);
+}
+
+
         input, textarea {
             width: 100%;
             padding: 12px 20px;
@@ -788,6 +805,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
+        .playlist-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
         .song-list {
             background: var(--white);
             border-radius: 20px;
@@ -1169,7 +1192,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="heart-loader"></div>
-        <p style="margin-top: 20px; color: var(--primary-pink); font-size: 1.2rem;">โหลดดดดดดดดด...</p>
+        <p style="margin-top: 20px; color: var(--primary-pink); font-size: 1.2rem;">โหลดดดดดดดดดด...</p>
     </div>
 
     <!-- Quick hide loading script -->
@@ -1219,6 +1242,10 @@
             <div class="hero">
                 <h1>Welcome to Our Universe จั๊บๆ 💫</h1>
                 <p>เว็บไซต์สร้างไว้ให้ดูความทรงจำต่างๆของปื้มแชมม</p>
+                <div class="firstpic">
+                    <img src="53.png" alt="Playlist cover" />
+                </div>
+                
                 <div class="day-counter">
                     <h2>เราอยู่ด้วยกันมาแล้ว</h2>
                     <div class="days" id="dayCount">0</div>
@@ -1509,9 +1536,9 @@
             
             <div class="playlist-container">
                 <div class="playlist-header">
-                    <div class="playlist-cover">🎵</div>
+                    <div class="playlist-cover"> <img src="5.jpg" alt="Playlist cover" /></div>
                     <h2 style="color: var(--primary-pink);">Songs of Our Love</h2>
-                    <p style="color: var(--gray);">12 songs • 48 minutes</p>
+                    <p style="color: var(--gray);">6 songs • 21 minutes</p>
                 </div>
 
                 <div class="song-list">
@@ -1714,9 +1741,9 @@
 
     <script>
         // Google Sheets Configuration
-        const SHEET_ID = '1lIEEKvwWP-cTFbjNv_psXHjVYjePPGLYjoIl2miyf7E'; // ใส่ ID ของ Google Sheet ที่สร้าง
+        const SHEET_ID = '1iiJNU2wvD2noq2ZxJhUZPFWvXHNA7hugTTtmyGy2ibA'; // ใส่ ID ของ Google Sheet ที่สร้าง
         const API_KEY = 'AIzaSyC_kQRNURUJCJyPLZe2O1-5rMvaUt7W8a4'; // ใส่ API Key (optional สำหรับ read-only)
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzPSkll1CSQQNw-orUEMxvHLkcspkoSB8O5zyvk7oU0klUYq97t7n0IStlobuPrFL93/exec'; // URL จาก Google Apps Script
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzjlcAP2I_rAb1zQEsJoZEYUgdwCVvMqtA-nzZYdeifh7-HHvKAX9iIMS5Tz7OGFS9L/exec'; // URL จาก Google Apps Script
 
         // Initialize
         const startDate = new Date('2025-11-18'); // เปลี่ยนเป็นวันที่คบกัน
@@ -2006,7 +2033,7 @@
             },
             {
                 question: "ออกทริปครั้งแรกเราไปที่ไหนกัน",
-                options: ["ภูเขา", "ทะเล", "สวน", "คาเฟ่"],
+                options: ["ทะเล", "ผัดไทย", "ต้มยำกุ้ง", "ข้าวผัด"],
                 correct: 1
             },
             {
@@ -2127,7 +2154,10 @@
         function isSpecialDate(year, month, day) {
             const specialDates = [
                 { month: 1, day: 14 }, // Valentine's Day
-                { month: startDate.getMonth(), day: startDate.getDate() }, // Anniversary
+                { month: startDate.getMonth(), day: startDate.getDate() },// Anniversary
+                { month: 10, day: 7 }, // Shamie's Birthday
+                { month: 9, day: 30 }, // Shamie's Mother's Birthday
+                { month: 8, day: 9 }  // Pluem's Birthday
             ];
             
             return specialDates.some(date => date.month === month && date.day === day);
